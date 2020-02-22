@@ -1,0 +1,34 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Pizza {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int slice = scanner.nextInt();
+        int temp = slice;
+        int type = scanner.nextInt();
+        int arr[] = new int[type];
+        int res[] = new int[type];
+        Arrays.fill(res, 0);
+        for (int i = 0; i < type; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        int count=0;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            int p = temp - arr[i];
+            if (p > 0) {
+                if (p < temp) {
+                    res[i] = 1;
+                    count=count+1;
+                    temp = temp - arr[i];
+                }
+            }
+        }
+        System.out.println(count);
+        for (int i = 0; i <res.length; i++) {
+            if(res[i]==1)
+                System.out.print(i+" ");
+
+        }
+    }
+}
